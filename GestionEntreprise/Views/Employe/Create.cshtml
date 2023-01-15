@@ -1,0 +1,61 @@
+﻿@model GestionEntreprise.Models.Employé
+
+
+@{
+    ViewData["Title"] = Model == null ? "Créer" :"Edit";
+}
+
+<h1>@ViewData["Title"] cet employé</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmployeId" class="control-label"></label>
+                <input asp-for="EmployeId" class="form-control" readonly />
+                <span asp-validation-for="EmployeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomEmploye" class="control-label"></label>
+                <input asp-for="NomEmploye" class="form-control" />
+                <span asp-validation-for="NomEmploye" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrenomEmploye" class="control-label"></label>
+                <input asp-for="PrenomEmploye" class="form-control" />
+                <span asp-validation-for="PrenomEmploye" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateEmbauche" class="control-label"></label>
+                <input asp-for="DateEmbauche" class="form-control" />
+                <span asp-validation-for="DateEmbauche" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salaire" class="control-label"></label>
+                <input asp-for="Salaire" class="form-control" />
+                <span asp-validation-for="Salaire" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomSecteur" class="control-label"></label>
+                <select asp-for="NomSecteur" class="form-control" asp-items="@(new SelectList(ViewBag.listeSecteurs,"SecteurId","SecteurName"))"> <option value="">Choisir Le Secteur</option></select>
+                <span asp-validation-for="NomSecteur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateNaissance" class="control-label"></label>
+                <input asp-for="DateNaissance" class="form-control" />
+                <span asp-validation-for="DateNaissance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value=@ViewData["Title"] class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

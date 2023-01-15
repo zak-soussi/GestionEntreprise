@@ -1,0 +1,71 @@
+﻿@model IEnumerable<GestionEntreprise.Models.Employé>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des Employés</h1>
+
+<h5>
+    <a asp-action="Create">Ajouter un nouveau Employé</a>
+</h5>
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomEmploye)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrenomEmploye)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEmbauche)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salaire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomSecteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateNaissance)
+            </th>
+            <th>What's new!</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomEmploye)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomEmploye)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEmbauche)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomSecteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateNaissance)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.EmployeId  }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.EmployeId  },new {onclick="return confirm('!!!!You are going to permanently delete this user!!!!')"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
